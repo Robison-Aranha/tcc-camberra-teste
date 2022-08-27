@@ -10,5 +10,5 @@ import lombok.*;
 public class Content {
     private String senderName;
     private String key;
-    private String content;
+    private Content content;
 }
