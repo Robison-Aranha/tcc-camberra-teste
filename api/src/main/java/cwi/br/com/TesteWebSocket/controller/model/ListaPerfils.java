@@ -1,6 +1,5 @@
 package cwi.br.com.TesteWebSocket.controller.model;
 
-
 import lombok.*;
 
 @Getter
@@ -8,10 +7,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Perfil {
+public class ListaPerfils {
 
-    private String senderName;
-    private String photo;
-    private String admin;
-    private int points;
+    private String key;
+    private String perfils;
 }

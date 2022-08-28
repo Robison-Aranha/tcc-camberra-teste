@@ -1,6 +1,7 @@
 package cwi.br.com.TesteWebSocket.controller;
 
 import cwi.br.com.TesteWebSocket.controller.model.Content;
+import cwi.br.com.TesteWebSocket.controller.model.ListaPerfils;
 import cwi.br.com.TesteWebSocket.controller.model.Message;
 import cwi.br.com.TesteWebSocket.controller.model.Perfil;
 import cwi.br.com.TesteWebSocket.controller.response.ResponseHash;
@@ -34,9 +35,15 @@ public class ChatController {
         return content;
     }
 
-    @MessageMapping("/room/perfil")
+    @MessageMapping("/room/perfils")
+    public ListaPerfils receberPerfilsSala(@Payload ListaPerfils listaPerfil){
+        simpMessagingTemplate.convertAndSend("/room/" + listaPerfil.getKey() + "/perfils", listaPerfil);
+        return listaPerfil;
+    }
+
+    @MessageMapping("/perfil")
     public Perfil receberPerfilSala(@Payload Perfil perfil){
-        simpMessagingTemplate.convertAndSend("/room/" + perfil.getKey() + "/perfil", perfil);
+        simpMessagingTemplate.convertAndSendToUser(perfil.getAdmin(), "/perfil", perfil);
         return perfil;
     }
 
