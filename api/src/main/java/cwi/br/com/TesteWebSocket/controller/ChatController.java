@@ -2,6 +2,7 @@ package cwi.br.com.TesteWebSocket.controller;
 
 import cwi.br.com.TesteWebSocket.controller.model.Content;
 import cwi.br.com.TesteWebSocket.controller.model.Message;
+import cwi.br.com.TesteWebSocket.controller.model.Perfil;
 import cwi.br.com.TesteWebSocket.controller.response.ResponseHash;
 import cwi.br.com.TesteWebSocket.services.GeradorDeIndentificarDeSala;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,15 @@ public class ChatController {
     }
 
     @MessageMapping("/room/content")
-    public Content receberContentChatroom(@Payload Content content){
+    public Content receberContentSala(@Payload Content content){
         simpMessagingTemplate.convertAndSend("/room/" + content.getKey() + "/content", content);
         return content;
+    }
+
+    @MessageMapping("/room/perfil")
+    public Perfil receberPerfilSala(@Payload Perfil perfil){
+        simpMessagingTemplate.convertAndSend("/room/" + perfil.getKey() + "/perfil");
+        return perfil;
     }
 
     @GetMapping("/hash")
