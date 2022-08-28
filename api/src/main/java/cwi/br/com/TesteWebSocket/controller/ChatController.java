@@ -15,6 +15,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +35,8 @@ public class ChatController {
     private GeradorDeIndentificarDeSala geradorDeIndentificarDeSala;
 
     @MessageMapping("/room")
-    public Message receberMesagemChatroom(@Payload Message message){
+    public Message receberMesagemChatroom(@Payload Message message, SimpMessageHeaderAccessor headerAccessor){
+        headerAccessor.getSessionAttributes().put("username", message.getSenderName());
         simpMessagingTemplate.convertAndSend("/room/" + message.getKey(), message); // /room/codigo-sala
         return message;
     }
