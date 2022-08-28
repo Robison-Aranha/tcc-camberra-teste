@@ -43,7 +43,7 @@ public class ChatController {
 
     @MessageMapping("/room/perfil")
     public Perfil receberPerfilSala(@Payload Perfil perfil){
-        simpMessagingTemplate.convertAndSendToUser(perfil.getAdmin(), "/perfil/room", perfil);
+        simpMessagingTemplate.convertAndSendToUser(perfil.getAdmin(), "/perfil", perfil);
         return perfil;
     }
 
