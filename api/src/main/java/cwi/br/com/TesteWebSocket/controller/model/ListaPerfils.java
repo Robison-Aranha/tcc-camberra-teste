@@ -2,6 +2,8 @@ package cwi.br.com.TesteWebSocket.controller.model;
 
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -10,5 +12,5 @@ import lombok.*;
 public class ListaPerfils {
 
     private String key;
-    private String perfils;
+    private List<Perfil> perfils;
 }
