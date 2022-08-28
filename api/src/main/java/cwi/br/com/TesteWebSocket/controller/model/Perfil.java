@@ -14,4 +14,5 @@ public class Perfil {
     private String photo;
     private String key;
     private int points;
+    private boolean receber;
 }
