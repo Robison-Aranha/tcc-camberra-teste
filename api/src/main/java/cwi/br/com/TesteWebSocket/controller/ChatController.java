@@ -35,8 +35,8 @@ public class ChatController {
     private GeradorDeIndentificarDeSala geradorDeIndentificarDeSala;
 
     @MessageMapping("/room")
-    public Message receberMesagemChatroom(@Payload Message message, SimpMessageHeaderAccessor headerAccessor){
-        headerAccessor.getSessionAttributes().put("username", message.getSenderName());
+    public Message receberMesagemChatroom(@Payload Message message){
+
         simpMessagingTemplate.convertAndSend("/room/" + message.getKey(), message); // /room/codigo-sala
         return message;
     }
@@ -49,12 +49,16 @@ public class ChatController {
 
     @MessageMapping("/room/perfils")
     public ListaPerfils receberPerfilsSala(@Payload ListaPerfils listaPerfil){
+
         simpMessagingTemplate.convertAndSend("/room/" + listaPerfil.getKey() + "/perfils", listaPerfil);
         return listaPerfil;
     }
 
     @MessageMapping("/room/perfil")
-    public Perfil receberPerfilSala(@Payload Perfil perfil){
+    public Perfil receberPerfilSala(@Payload Perfil perfil, SimpMessageHeaderAccessor headerAccessor){
+        headerAccessor.getSessionAttributes().put("username", perfil.getSenderName());
+        headerAccessor.getSessionAttributes().put("key", perfil.getKey());
+
         simpMessagingTemplate.convertAndSendToUser(perfil.getAdmin(), "/perfil", perfil);
         return perfil;
     }
