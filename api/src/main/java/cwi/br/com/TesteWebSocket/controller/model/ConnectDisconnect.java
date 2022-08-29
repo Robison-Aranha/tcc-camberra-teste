@@ -8,10 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Perfil {
-
-    private String senderName;
-    private String photo;
+public class ConnectDisconnect {
+    private String serderName;
     private String key;
-    private int points;
+    private Status status;
 }
+

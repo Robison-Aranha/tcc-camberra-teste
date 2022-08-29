@@ -54,15 +54,6 @@ public class ChatController {
         return listaPerfil;
     }
 
-    @MessageMapping("/room/perfil")
-    public Perfil receberPerfilSala(@Payload Perfil perfil, SimpMessageHeaderAccessor headerAccessor){
-        headerAccessor.getSessionAttributes().put("username", perfil.getSenderName());
-        headerAccessor.getSessionAttributes().put("key", perfil.getKey());
-        headerAccessor.getSessionAttributes().put("admin", perfil.getAdmin());
-
-        simpMessagingTemplate.convertAndSendToUser(perfil.getAdmin(), "/perfil", perfil);
-        return perfil;
-    }
 
     @GetMapping("/hash")
     public ResponseHash gerarHash(){
