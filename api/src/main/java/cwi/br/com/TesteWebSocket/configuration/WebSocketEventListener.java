@@ -25,22 +25,6 @@ public class WebSocketEventListener {
     @Autowired
     private SimpMessagingTemplate simpMessagingTemplate;
 
-    @EventListener
-    public void handleWebSocketConnectListener(SessionConnectEvent event){
-        StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
-
-        String username = (String) headerAccessor.getSessionAttributes().get("username");
-        String key = (String) headerAccessor.getSessionAttributes().get("key");
-
-        ConnectDisconnect connection = new ConnectDisconnect();
-
-        connection.setSerderName(username);
-        connection.setStatus(Status.JOIN);
-        connection.setKey(key);
-
-        simpMessagingTemplate.convertAndSend("/room/" + key + "/perfils", connection);
-    }
-
     //method called when user close page in browser
     @EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
@@ -48,15 +32,10 @@ public class WebSocketEventListener {
 
         String username = (String) headerAccessor.getSessionAttributes().get("username");
         String key = (String) headerAccessor.getSessionAttributes().get("key");
+        String admin = (String) headerAccessor.getSessionAttributes().get("admin");
 
-        ConnectDisconnect connection = new ConnectDisconnect();
-
-        connection.setSerderName(username);
-        connection.setStatus(Status.JOIN);
-        connection.setKey(key);
-
-        simpMessagingTemplate.convertAndSend("/room/" + key + "/perfils", connection);
-        simpMessagingTemplate.convertAndSend("/room/" + key, connection);
+        simpMessagingTemplate.convertAndSend("/room/" + admin + "/perfils", username);
+        simpMessagingTemplate.convertAndSend("/room/" + key, username);
     }
 }
 
