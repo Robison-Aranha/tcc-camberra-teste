@@ -30,10 +30,8 @@ public class WebSocketEventListener {
         String username = (String) headerAccessor.getSessionAttributes().get("username");
         String key = (String) headerAccessor.getSessionAttributes().get("key");
 
-        String mensagem = "{senderName: 'room', status: 'MESSAGE', disconect:" + "'" + username + "'" + "}";
-
-        simpMessagingTemplate.convertAndSend("/room/" + key + "/perfil", mensagem);
-        simpMessagingTemplate.convertAndSend("/room/" + key, mensagem);
+        simpMessagingTemplate.convertAndSend("/room/" + key + "/perfil", username);
+        simpMessagingTemplate.convertAndSend("/room/" + key, username);
     }
 }
 
