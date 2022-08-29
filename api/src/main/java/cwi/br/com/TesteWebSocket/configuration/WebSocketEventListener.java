@@ -39,7 +39,6 @@ public class WebSocketEventListener {
         connection.setKey(key);
 
         simpMessagingTemplate.convertAndSend("/room/" + key + "/perfils", connection);
-        simpMessagingTemplate.convertAndSend("/room/" + key, connection);
     }
 
     //method called when user close page in browser
