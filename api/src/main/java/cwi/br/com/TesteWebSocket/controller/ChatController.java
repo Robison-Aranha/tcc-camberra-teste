@@ -44,6 +44,12 @@ public class ChatController {
         return content;
     }
 
+    @MessageMapping("/room/verification")
+    public Verification receberVerificationSala(@Payload Verification verification){
+        simpMessagingTemplate.convertAndSend("/room/" + verification.getKey() + "/verification", verification);
+        return verification;
+    }
+
 
     @MessageMapping("/room/start")
     public Verification receberStartRoom(@Payload Verification start) {
