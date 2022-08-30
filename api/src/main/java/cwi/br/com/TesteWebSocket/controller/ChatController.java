@@ -1,10 +1,7 @@
 package cwi.br.com.TesteWebSocket.controller;
 
 import cwi.br.com.TesteWebSocket.configuration.WebSocketEventListener;
-import cwi.br.com.TesteWebSocket.controller.model.Content;
-import cwi.br.com.TesteWebSocket.controller.model.ListaPerfils;
-import cwi.br.com.TesteWebSocket.controller.model.Message;
-import cwi.br.com.TesteWebSocket.controller.model.Perfil;
+import cwi.br.com.TesteWebSocket.controller.model.*;
 import cwi.br.com.TesteWebSocket.controller.response.ResponseHash;
 import cwi.br.com.TesteWebSocket.services.GeradorDeIndentificarDeSala;
 
@@ -45,6 +42,12 @@ public class ChatController {
     public Content receberContentSala(@Payload Content content){
         simpMessagingTemplate.convertAndSend("/room/" + content.getKey() + "/content", content);
         return content;
+    }
+
+    @MessageMapping("/room/start")
+    public Verification receberStartRoom(@Payload Verification start){
+        simpMessagingTemplate.convertAndSend("/room/" + start.getKey() + "/stop", start);
+        return start;
     }
 
     @MessageMapping("/room/perfils")
