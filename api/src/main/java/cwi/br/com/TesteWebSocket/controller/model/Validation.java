@@ -1,5 +1,6 @@
 package cwi.br.com.TesteWebSocket.controller.model;
 
+
 import lombok.*;
 
 @Getter
@@ -7,8 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Content {
-    private String senderName;
+public class Validation {
     private String key;
-    private String content;
+    private String uncheckeds;
 }

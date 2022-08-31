@@ -38,6 +38,18 @@ public class ChatController {
         return message;
     }
 
+    @MessageMapping("/room/scoreboard")
+    public Verification receberVerificationScoreBoard(@Payload Verification verification){
+        simpMessagingTemplate.convertAndSend("/room/" + verification.getKey() + "/scoreboard", verification);
+        return verification;
+    }
+
+    @MessageMapping("/room/validation")
+    public Validation receberValidations(@Payload Validation validation){
+        simpMessagingTemplate.convertAndSend("/room/" + validation.getKey() + "/validation", validation);
+        return validation;
+    }
+
     @MessageMapping("/room/content")
     public Content receberContentSala(@Payload Content content){
         simpMessagingTemplate.convertAndSend("/room/" + content.getKey() + "/content", content);
