@@ -1,14 +1,17 @@
 package cwi.br.com.TesteWebSocket.controller.model;
 
+
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Content {
-    private String senderName;
-    private String admin;
-    private String content;
+public class ListContents {
+
+    private String key;
+    private List<Content> contents;
 }
