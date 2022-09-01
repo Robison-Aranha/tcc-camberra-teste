@@ -9,6 +9,8 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class Validation {
+
+    private String senderName;
     private String key;
     private String uncheckeds;
 }
