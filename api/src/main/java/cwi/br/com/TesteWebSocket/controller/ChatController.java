@@ -56,12 +56,6 @@ public class ChatController {
         return content;
     }
 
-    @MessageMapping("/room/contents")
-    public ListContents receberTodosOsContens(@Payload ListContents listContents){
-        simpMessagingTemplate.convertAndSend("/room/" + listContents.getKey() + "/contents");
-        return listContents;
-    }
-
     @MessageMapping("/room/verification")
     public Verification receberVerificationSala(@Payload Verification verification){
         simpMessagingTemplate.convertAndSend("/room/" + verification.getKey() + "/verification", verification);
