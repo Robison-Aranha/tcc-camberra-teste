@@ -51,9 +51,15 @@ public class ChatController {
     }
 
     @MessageMapping("/room/content")
-    public Content receberContentAdmin(@Payload Content content){
-        simpMessagingTemplate.convertAndSend("/room/" + content.getKey() + "/content", content);
+    public Content receberContentOutrosUsuarios(@Payload Content content){
+        simpMessagingTemplate.convertAndSend("/room/" + content.getHowStopped() + "/content", content);
         return content;
+    }
+
+    @MessageMapping("/room/contents")
+    public ListContents receberTodosOsContens(@Payload ListContents listContents){
+        simpMessagingTemplate.convertAndSend("/room/" + listContents.getKey() + "/contents");
+        return listContents;
     }
 
     @MessageMapping("/room/verification")
