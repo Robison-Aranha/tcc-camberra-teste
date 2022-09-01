@@ -9,6 +9,6 @@ import lombok.*;
 @ToString
 public class Content {
     private String senderName;
-    private String admin;
+    private String key;
     private String content;
 }
