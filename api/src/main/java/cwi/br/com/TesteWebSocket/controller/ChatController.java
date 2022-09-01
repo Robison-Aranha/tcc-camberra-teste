@@ -52,7 +52,7 @@ public class ChatController {
 
     @MessageMapping("/room/content")
     public Content receberContentOutrosUsuarios(@Payload Content content){
-        simpMessagingTemplate.convertAndSend("/room/" + content.getHowStopped() + "/content", content);
+        simpMessagingTemplate.convertAndSend("/room/" + content.getKey() + "/content", content);
         return content;
     }
 
