@@ -46,7 +46,7 @@ public class ChatController {
 
     @MessageMapping("/room/validation")
     public Validation receberValidations(@Payload Validation validation){
-        simpMessagingTemplate.convertAndSend("/room/" + validation.getKey() + "/validation", validation);
+        simpMessagingTemplate.convertAndSend("/room/" + validation.getSenderName() + "/validation", validation);
         return validation;
     }
 
