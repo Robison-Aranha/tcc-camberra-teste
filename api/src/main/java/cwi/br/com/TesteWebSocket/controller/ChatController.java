@@ -44,6 +44,12 @@ public class ChatController {
         return verification;
     }
 
+    @MessageMapping("/room/points")
+    public Content receberPointsPlayers(@Payload Content point){
+        simpMessagingTemplate.convertAndSend("/room/" + point.getKey() + "/point");
+        return point;
+    }
+
     @MessageMapping("/room/validation")
     public Validation receberValidations(@Payload Validation validation){
         simpMessagingTemplate.convertAndSend("/room/" + validation.getSenderName() + "/validation", validation);
