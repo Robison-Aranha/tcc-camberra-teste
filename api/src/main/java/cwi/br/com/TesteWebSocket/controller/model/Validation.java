@@ -10,6 +10,7 @@ import lombok.*;
 @ToString
 public class Validation {
 
+    private String senderName;
     private String key;
     private String inputs;
     private String uncheckeds;
