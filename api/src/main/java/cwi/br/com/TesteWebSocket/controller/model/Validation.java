@@ -11,5 +11,6 @@ import lombok.*;
 public class Validation {
 
     private String key;
+    private String inputs;
     private String uncheckeds;
 }
