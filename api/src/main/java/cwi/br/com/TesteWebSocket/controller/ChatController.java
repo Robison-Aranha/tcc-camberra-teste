@@ -46,7 +46,7 @@ public class ChatController {
 
     @MessageMapping("/room/points")
     public Content receberPointsPlayers(@Payload Content point){
-        simpMessagingTemplate.convertAndSend("/room/" + point.getKey() + "/points");
+        simpMessagingTemplate.convertAndSend("/room/" + point.getKey() + "/points", point);
         return point;
     }
 
