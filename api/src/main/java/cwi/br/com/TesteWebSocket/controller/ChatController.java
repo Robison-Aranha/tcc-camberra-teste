@@ -94,7 +94,7 @@ public class ChatController {
 
     @MessageMapping("/room/timer")
     public TimerCount receberTimer(@Payload TimerCount timerCount){
-        simpMessagingTemplate.convertAndSend("/room/" + timerCount.getKey() + "/timer");
+        simpMessagingTemplate.convertAndSend("/room/" + timerCount.getKey() + "/timer", timerCount);
         return timerCount;
     }
 
