@@ -8,16 +8,15 @@ import cwi.br.com.TesteWebSocket.services.GeradorDeIndentificarDeSala;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.event.EventListener;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.socket.messaging.SessionDisconnectEvent;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 @RestController
@@ -91,6 +90,12 @@ public class ChatController {
 
         simpMessagingTemplate.convertAndSend("/room/" + listaPerfil.getKey() + "/perfils", listaPerfil);
         return listaPerfil;
+    }
+
+    @MessageMapping("/room/timer")
+    public TimerCount receberTimer(@Payload TimerCount timerCount){
+        simpMessagingTemplate.convertAndSend("/room/" + timerCount.getKey() + "/timer");
+        return timerCount;
     }
 
 
