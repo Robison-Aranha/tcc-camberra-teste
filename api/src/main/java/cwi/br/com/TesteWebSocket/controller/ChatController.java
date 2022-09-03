@@ -94,13 +94,13 @@ public class ChatController {
 
     @MessageMapping("/room/timerInGame")
     public TimerCount receberTimerInGame(@Payload TimerCount timerCount){
-        simpMessagingTemplate.convertAndSend("/room/" + timerCount.getKey() + "/timer", timerCount);
+        simpMessagingTemplate.convertAndSend("/room/" + timerCount.getKey() + "/timerInGame", timerCount);
         return timerCount;
     }
 
     @MessageMapping("/room/timerInVerification")
     public TimerCount receberTimerInVerification(@Payload TimerCount timerCount){
-        simpMessagingTemplate.convertAndSend("/room/" + timerCount.getKey() + "/timer", timerCount);
+        simpMessagingTemplate.convertAndSend("/room/" + timerCount.getKey() + "/timerInVerification", timerCount);
         return timerCount;
     }
 
