@@ -92,12 +92,17 @@ public class ChatController {
         return listaPerfil;
     }
 
-    @MessageMapping("/room/timer")
-    public TimerCount receberTimer(@Payload TimerCount timerCount){
+    @MessageMapping("/room/timerInGame")
+    public TimerCount receberTimerInGame(@Payload TimerCount timerCount){
         simpMessagingTemplate.convertAndSend("/room/" + timerCount.getKey() + "/timer", timerCount);
         return timerCount;
     }
 
+    @MessageMapping("/room/timerInVerification")
+    public TimerCount receberTimerInVerification(@Payload TimerCount timerCount){
+        simpMessagingTemplate.convertAndSend("/room/" + timerCount.getKey() + "/timer", timerCount);
+        return timerCount;
+    }
 
     @GetMapping("/hash")
     public ResponseHash gerarHash(){
