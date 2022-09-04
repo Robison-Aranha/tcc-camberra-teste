@@ -74,6 +74,18 @@ public class ChatController {
         return start;
     }
 
+    @MessageMapping("/room/round")
+    public Verification receberRoundRoom(@Payload Verification round){
+        simpMessagingTemplate.convertAndSend("/room/" + round.getKey() + "/round", round);
+        return round;
+    }
+
+    @MessageMapping("/room/end")
+    public Verification receberFimRound(@Payload Verification end){
+        simpMessagingTemplate.convertAndSend("/room/" + end.getKey() + "/end", end);
+        return end;
+    }
+
     @MessageMapping("/room/nextRound")
     public Verification receberNextRoundRoom(@Payload Verification nextRound){
         simpMessagingTemplate.convertAndSend("/room/" + nextRound.getKey() + "/nextRound", nextRound);
