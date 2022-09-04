@@ -73,6 +73,7 @@ public class ChatController {
         simpMessagingTemplate.convertAndSend("/room/" + start.getKey() + "/stop", start);
         return start;
     }
+
     @MessageMapping("/room/votation")
     public Verification receberVotationRoom(@Payload Verification votation){
         simpMessagingTemplate.convertAndSend("/room/" + votation.getKey() + "/votation", votation);
@@ -106,12 +107,6 @@ public class ChatController {
     @MessageMapping("/room/timerInVerification")
     public TimerCount receberTimerInVerification(@Payload TimerCount timerCount){
         simpMessagingTemplate.convertAndSend("/room/" + timerCount.getKey() + "/timerInVerification", timerCount);
-        return timerCount;
-    }
-
-    @MessageMapping("/room/timerInScore")
-    public TimerCount receberTimerInScore(@Payload TimerCount timerCount){
-        simpMessagingTemplate.convertAndSend("/room/" + timerCount.getKey() + "/timerInScore", timerCount);
         return timerCount;
     }
 
