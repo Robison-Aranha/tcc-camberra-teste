@@ -73,6 +73,11 @@ public class ChatController {
         simpMessagingTemplate.convertAndSend("/room/" + start.getKey() + "/stop", start);
         return start;
     }
+    @MessageMapping("/room/votation")
+    public Verification receberVotationRoom(@Payload Verification votation){
+        simpMessagingTemplate.convertAndSend("/room/" + votation.getKey() + "/votation", votation);
+        return votation;
+    }
 
     @MessageMapping("/room/perfil")
     public Perfil receberPerfilsSala(@Payload Perfil perfil, SimpMessageHeaderAccessor headerAccessor){
