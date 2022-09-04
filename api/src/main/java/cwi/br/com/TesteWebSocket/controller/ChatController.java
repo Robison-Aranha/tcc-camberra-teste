@@ -74,6 +74,12 @@ public class ChatController {
         return start;
     }
 
+    @MessageMapping("/room/nextRound")
+    public Verification receberNextRoundRoom(@Payload Verification nextRound){
+        simpMessagingTemplate.convertAndSend("/room/" + nextRound.getKey() + "/nextRound", nextRound);
+        return nextRound;
+    }
+
     @MessageMapping("/room/votation")
     public Verification receberVotationRoom(@Payload Verification votation){
         simpMessagingTemplate.convertAndSend("/room/" + votation.getKey() + "/votation", votation);
