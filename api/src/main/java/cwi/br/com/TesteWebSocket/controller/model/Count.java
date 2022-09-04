@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class TimerCount {
+public class Count {
     private String key;
     private Integer count;
 }

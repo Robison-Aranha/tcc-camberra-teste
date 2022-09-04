@@ -15,9 +15,6 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 
 @RestController
 public class ChatController {
@@ -75,7 +72,7 @@ public class ChatController {
     }
 
     @MessageMapping("/room/round")
-    public Verification receberRoundRoom(@Payload Verification round){
+    public Count receberRoundRoom(@Payload Count round){
         simpMessagingTemplate.convertAndSend("/room/" + round.getKey() + "/round", round);
         return round;
     }
@@ -117,13 +114,13 @@ public class ChatController {
     }
 
     @MessageMapping("/room/timerInGame")
-    public TimerCount receberTimerInGame(@Payload TimerCount timerCount){
+    public Count receberTimerInGame(@Payload Count timerCount){
         simpMessagingTemplate.convertAndSend("/room/" + timerCount.getKey() + "/timerInGame", timerCount);
         return timerCount;
     }
 
     @MessageMapping("/room/timerInVerification")
-    public TimerCount receberTimerInVerification(@Payload TimerCount timerCount){
+    public Count receberTimerInVerification(@Payload Count timerCount){
         simpMessagingTemplate.convertAndSend("/room/" + timerCount.getKey() + "/timerInVerification", timerCount);
         return timerCount;
     }
