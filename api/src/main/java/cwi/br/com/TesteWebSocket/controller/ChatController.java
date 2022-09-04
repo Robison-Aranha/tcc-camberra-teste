@@ -104,6 +104,12 @@ public class ChatController {
         return timerCount;
     }
 
+    @MessageMapping("/room/timerInScore")
+    public TimerCount receberTimerInScore(@Payload TimerCount timerCount){
+        simpMessagingTemplate.convertAndSend("/room/" + timerCount.getKey() + "/timerInScore", timerCount);
+        return timerCount;
+    }
+
     @GetMapping("/hash")
     public ResponseHash gerarHash(){
         return geradorDeIndentificarDeSala.gerar();
