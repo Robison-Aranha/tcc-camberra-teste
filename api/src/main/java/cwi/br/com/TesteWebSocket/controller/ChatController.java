@@ -73,7 +73,7 @@ public class ChatController {
 
     @MessageMapping("/room/adminOut")
     public Verification receberMensagemAdminOut(@Payload Verification out){
-        simpMessagingTemplate.convertAndSend("/room/" + out.getKey() + "/adminOuy");
+        simpMessagingTemplate.convertAndSend("/room/" + out.getKey() + "/adminOut");
         return out;
     }
 
