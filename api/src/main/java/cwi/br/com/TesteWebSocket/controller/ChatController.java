@@ -100,6 +100,11 @@ public class ChatController {
         simpMessagingTemplate.convertAndSend("/room/" + votation.getKey() + "/votation", votation);
         return votation;
     }
+    @MessageMapping("/room/themes")
+    public Content receberTemas(@Payload Content themes){
+        simpMessagingTemplate.convertAndSend("/room/" + themes.getKey() + "/themes", themes);
+        return themes;
+    }
 
     @MessageMapping("/room/perfil")
     public Perfil receberPerfilsSala(@Payload Perfil perfil, SimpMessageHeaderAccessor headerAccessor){
