@@ -10,5 +10,5 @@ import lombok.*;
 @ToString
 public class Letter {
     private String key;
-    private Character letter;
+    private String letter;
 }
