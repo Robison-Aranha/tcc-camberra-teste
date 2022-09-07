@@ -95,15 +95,16 @@ public class ChatController {
         return nextRound;
     }
 
+    @MessageMapping("/room/letter")
+    public Letter receberLetra(@Payload Letter letter){
+        simpMessagingTemplate.convertAndSend("/room/" + letter.getKey() + "/letter", letter);
+        return letter;
+    }
+
     @MessageMapping("/room/votation")
     public Verification receberVotationRoom(@Payload Verification votation){
         simpMessagingTemplate.convertAndSend("/room/" + votation.getKey() + "/votation", votation);
         return votation;
-    }
-    @MessageMapping("/room/themes")
-    public Content receberTemas(@Payload Content themes){
-        simpMessagingTemplate.convertAndSend("/room/" + themes.getKey() + "/themes", themes);
-        return themes;
     }
 
     @MessageMapping("/room/perfil")
