@@ -112,6 +112,7 @@ public class ChatController {
         headerAccessor.getSessionAttributes().put("username", perfil.getSenderName());
         headerAccessor.getSessionAttributes().put("admin", perfil.getAdmin());
         headerAccessor.getSessionAttributes().put("key", perfil.getKey());
+        headerAccessor.getSessionAttributes().put("id", perfil.getId());
 
         simpMessagingTemplate.convertAndSend("/room/" + perfil.getAdmin() + "/perfil", perfil);
         return perfil;

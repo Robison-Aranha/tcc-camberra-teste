@@ -29,9 +29,10 @@ public class WebSocketEventListener {
         String username = (String) headerAccessor.getSessionAttributes().get("username");
         String key = (String) headerAccessor.getSessionAttributes().get("key");
         String admin = (String) headerAccessor.getSessionAttributes().get("admin");
+        String id = (String) headerAccessor.getSessionAttributes().get("id");
 
         simpMessagingTemplate.convertAndSend("/room/" + admin + "/perfil", username);
-        simpMessagingTemplate.convertAndSend("/room/" + key + "/perfils", username);
+        simpMessagingTemplate.convertAndSend("/room/" + key + "/perfils", id);
         simpMessagingTemplate.convertAndSend("/room/" + key, username);
     }
 }

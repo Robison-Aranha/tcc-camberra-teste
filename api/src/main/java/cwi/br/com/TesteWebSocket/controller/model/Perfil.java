@@ -12,6 +12,7 @@ public class Perfil {
 
     private String senderName;
     private String photo;
+    private String id;
     private String admin;
     private String key;
 }
