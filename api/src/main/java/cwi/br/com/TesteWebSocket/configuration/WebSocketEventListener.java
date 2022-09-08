@@ -31,6 +31,7 @@ public class WebSocketEventListener {
         String admin = (String) headerAccessor.getSessionAttributes().get("admin");
 
         simpMessagingTemplate.convertAndSend("/room/" + admin + "/perfil", username);
+        simpMessagingTemplate.convertAndSend("/room/" + key + "/perfils", username);
         simpMessagingTemplate.convertAndSend("/room/" + key, username);
     }
 }
